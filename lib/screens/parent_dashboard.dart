@@ -5,6 +5,7 @@ import 'chat_screen.dart';
 import 'manage_tabs_screen.dart';
 import 'language_settings_screen.dart';
 import 'login_screen.dart';
+import 'add_therapist_screen.dart';
 
 class ParentDashboard extends StatefulWidget {
   @override
@@ -75,7 +76,7 @@ class _ParentDashboardState extends State<ParentDashboard> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(color: Colors.orange.shade900),
-              child: Text("BOLO Parent Menu", style: TextStyle(color: Colors.white, fontSize: 22)),
+              child: Text("BOLO Parent Menu", style: TextStyle(color: Colors.white, fontSize: 18)),
             ),
 
             // Settings Group
@@ -103,14 +104,53 @@ class _ParentDashboardState extends State<ParentDashboard> {
                   title: Text("Add Child"),
                   onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => AddChildScreen())),
                 ),
+                ListTile(
+                  leading: Icon(Icons.medical_services),
+                  title: Text("Add Therapist"),
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => AddTherapistScreen())
+                    );
+                  },
+                ),
               ],
             ),
             Divider(),
 
-            // Profiles List
+            // --- PROFILES & CHAT SECTION ---
             Padding(
               padding: const EdgeInsets.all(12.0),
-              child: Text("Registered Profiles (Hold to delete)", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+              child: Text("Profiles & Messages", style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey)),
+            ),
+
+// Dynamic Children List (Puraana wala logic)
+            ...myChildren.map((child) => ListTile(
+              leading: Icon(Icons.person, color: Colors.orange),
+              title: Text("Child: ${child.name}"),
+              onLongPress: () => _confirmDelete(myChildren.indexOf(child)),
+            )).toList(),
+
+            Divider(),
+
+// THERAPIST CHAT (Ye ab enable hai)
+            ListTile(
+              leading: CircleAvatar(
+                backgroundColor: Colors.teal,
+                child: Icon(Icons.medical_services, color: Colors.white, size: 20),
+              ),
+              title: Text("Therapist: Dr. Sara"),
+              subtitle: Text("Online"),
+              // Yahan se Chat Screen khulegi
+              trailing: IconButton(
+                icon: Icon(Icons.chat, color: Colors.teal),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChatScreen(therapistName: "Dr. Sara")),
+                  );
+                },
+              ),
             ),
             ...List.generate(myChildren.length, (index) {
               final child = myChildren[index];
