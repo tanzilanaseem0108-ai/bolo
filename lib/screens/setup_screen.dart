@@ -1,3 +1,5 @@
+import 'home_screen.dart';
+import 'login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SetupScreen extends StatefulWidget {
@@ -67,12 +69,17 @@ class _SetupScreenState extends State<SetupScreen> {
                 ],
               ),
 
-              SizedBox(height: 30),
+              SizedBox(height: 10),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(backgroundColor: Colors.orange),
                 onPressed: () {
-                  // BACKEND MENTION: Aapki partner yahan ye data Firebase/Database mein save karengi [cite: 61, 62]
+                  // BACKEND MENTION: Aapki partner yahan ye data FirebaHomeScreense/Database mein save karengi [cite: 61, 62]
                   print("Saving data...");
+
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()),
+                  );
                 },
                 child: Text(isUrdu ? "آگے بڑھیں" : "Get Started"),
               ),
