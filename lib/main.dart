@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'screens/language_selection_screen.dart';
-import 'package:flutter/material.dart';
 import 'screens/parent_dashboard.dart';
 
 void main() {

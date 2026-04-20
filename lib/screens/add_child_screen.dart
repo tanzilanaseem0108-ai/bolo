@@ -65,7 +65,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ChoiceChip(
-                    label: Text("Male / Man"),
+                    label: Text("Male"),
                     selected: selectedVoice == "Male",
                     onSelected: (bool selected) {
                       setState(() { selectedVoice = "Male"; });
@@ -73,7 +73,7 @@ class _AddChildScreenState extends State<AddChildScreen> {
                   ),
                   SizedBox(width: 10),
                   ChoiceChip(
-                    label: Text("Female / Woman"),
+                    label: Text("Female"),
                     selected: selectedVoice == "Female",
                     onSelected: (bool selected) {
                       setState(() { selectedVoice = "Female"; });
