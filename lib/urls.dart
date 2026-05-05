@@ -1,0 +1,1 @@
+var base = "https://awaz-backend.onrender.com";

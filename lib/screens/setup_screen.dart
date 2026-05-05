@@ -3,7 +3,10 @@ import 'login_screen.dart';
 import 'package:flutter/material.dart';
 
 class SetupScreen extends StatefulWidget {
+  const SetupScreen({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _SetupScreenState createState() => _SetupScreenState();
 }
 
